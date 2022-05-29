@@ -7,7 +7,8 @@ namespace Calendar // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             Console.WriteLine("Hello. This application return name day of the week by number");
-            Console.WriteLine("Please, enter number of the day or 'EXIT' to exit.");
+           
+            Console.WriteLine("Please, enter number of the day or 'EXIT' to exi!");
 
             string str;
             do
@@ -62,9 +63,7 @@ namespace Calendar // Note: actual namespace depends on the project name.
 
 
             } while (str != "EXIT") ;
-         
-          
-          
+                  
         }
     }
  }
