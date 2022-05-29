@@ -10,6 +10,7 @@ namespace Multiplication
             string stringValue;
             do
             {
+
                 int number = 0;
                 Console.WriteLine("Please, enter number or 'EXIT' for exit application!");
                 stringValue = Console.ReadLine();
