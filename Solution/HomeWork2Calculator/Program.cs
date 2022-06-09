@@ -160,9 +160,15 @@ namespace HomeWork2Calculator
 
         static double RetuгnDivision(int firVal, int secVal)
         {
-            double res = (double)firVal / secVal;
-            Console.WriteLine($"\n {firVal} / {secVal} = {res}");
-            return res;
+            if (secVal != 0)
+            {
+                double res = (double)firVal / secVal;
+                Console.WriteLine($"\n {firVal} / {secVal} = {res}");
+                return res;
+            }
+
+            Console.WriteLine("Division by zerro is incorrect!");
+            return 0;
         }
        
         static long ReturnExponent(int firVal, int secVal)
@@ -235,7 +241,6 @@ namespace HomeWork2Calculator
             }
             return result;
         }
-
 
         static int strValueIsInt(string str)
         {
