@@ -6,14 +6,24 @@ namespace HomeWork3Classes
     {
         static void Main(string[] args)
         {
+
+            // work with class Money
+
+            var byr = new Money(12.01);
+
+            Console.WriteLine($"rub = {byr.GetRub}  & cents={byr.GetKop}");
+
+
+            // work with Fractions
+
             var element_1 = new Fractions();
             var element_2 = new Fractions();
 
-            var firstValue = element_1.GetFractions(12.079);
+            var firstValue = element_1.GetFractions(12.179);
 
-            var secondValue = element_2.GetFractions(12.079);
+            var secondValue = element_2.GetFractions(12.179);
 
-            Console.WriteLine($"elem1 = { firstValue} \t & elem2 = {secondValue}");
+            Console.WriteLine($"elem1 = {firstValue} \t & elem2 = {secondValue}");
 
             var wholePart = element_1.WholePart;
 
@@ -26,6 +36,9 @@ namespace HomeWork3Classes
             Fractions.ReturnMultiplic(firstValue, secondValue);
 
             Fractions.ReturnСompare(firstValue, secondValue);
-       }
+
+
+
+        }
     }
 }
