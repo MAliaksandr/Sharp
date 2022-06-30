@@ -8,6 +8,6 @@ namespace HomeWorkRWTransport
 {
     internal interface IGetInfoable
     {
-        void GetInfo();
+        string GetInfo();
     }
 }

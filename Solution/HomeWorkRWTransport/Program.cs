@@ -1,4 +1,5 @@
-﻿namespace HomeWorkRWTransport
+﻿using System.Text;
+namespace HomeWorkRWTransport
 {
     internal class Program
     {
@@ -42,6 +43,34 @@
 
             var tr = new Train(2, "TN-25");
             tr.GetInfo();
+
+            var array = new IGetInfoable[]
+            {
+                new PassengerCar(PassengerCar.PassengerCarType.P)
+                {
+                    BusyPlace = 12
+                },
+                new PassengerCar(PassengerCar.PassengerCarType.M)
+                {
+                    BusyPlace = 23
+                },
+                new PassengerCar(PassengerCar.PassengerCarType.K)
+                {
+                   BusyPlace= 60
+                }
+
+            };
+
+
+            var sb = new StringBuilder();
+
+            foreach (var item in array)
+            {
+                sb.AppendLine(item.GetInfo());
+                sb.AppendLine("------------");
+            }
+            Console.WriteLine(sb);
+
 
         }
     }

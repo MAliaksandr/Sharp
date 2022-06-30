@@ -1,4 +1,5 @@
-﻿namespace HomeWorkRWTransport
+﻿using System.Text;
+namespace HomeWorkRWTransport
 {
     // пассажирский вагон - наследник вагона в общем смысле
     internal class PassengerCar : Car, IGetInfoable
@@ -88,14 +89,15 @@
                 }
         }
 
-        public void GetInfo()
+        public string GetInfo()
         {
-            Console.WriteLine($"This is type. {passengerCarType}");
-            Console.WriteLine($"All places in this car:{maxPeopleCount}");
-            Console.WriteLine($"Free people places:{_freePlaceCount}");
-            Console.WriteLine($"Busy places:{_busyPlaceCount}");
-        }
+            var st = new StringBuilder($"This is type: { passengerCarType}\n");
+            st.AppendLine($"All places in this car:{maxPeopleCount}");
+            st.AppendLine($"Free people places:{_freePlaceCount}");
+            st.AppendLine($"Busy places:{_busyPlaceCount}");
 
+            return st.ToString();
+        }
         private void SetPlace(byte value)
         {
             if (((byte)maxPeopleCount - _busyPlaceCount >= value) || (maxPeopleCount> value))

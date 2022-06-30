@@ -5,7 +5,7 @@ namespace HomeWorkRWTransport
     {
         public readonly byte countCar;
         public readonly string numerTrain;
-        public readonly PassengerCar passCar;
+       // public readonly PassengerCar passCar;
 
         public Train(byte countCar, string numerTrain)
         {
@@ -13,13 +13,13 @@ namespace HomeWorkRWTransport
             this.numerTrain = numerTrain;
         }
 
-        public void GetInfo()
+        public string GetInfo()
         {
             var st = new StringBuilder("I'm a train -)\n");
             st.AppendLine($"My number is {numerTrain}");
             st.AppendLine($"I have a {countCar} cars.");
           
-            Console.WriteLine(st);      
+           return st.ToString();      
         }
         public void Move(bool value, string destination)
         {
