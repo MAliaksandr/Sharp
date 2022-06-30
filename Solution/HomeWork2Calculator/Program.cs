@@ -127,7 +127,6 @@ namespace HomeWork2Calculator
                 case ConsoleKey.Y:
                     Console.Clear();
                     break;
-
             }
         }
 
@@ -268,7 +267,7 @@ namespace HomeWork2Calculator
         {
             bool isInt;
             var defaultValue = -1;
-            Console.WriteLine("\n Enter some value");
+            Console.WriteLine("\nEnter some value");
 
             do
             {
@@ -283,7 +282,7 @@ namespace HomeWork2Calculator
 
             } while (!isInt);
 
-            Console.WriteLine($"\nvalue = {defaultValue}");
+            Console.WriteLine($"value = {defaultValue}");
 
             return defaultValue;
 

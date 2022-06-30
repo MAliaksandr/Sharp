@@ -363,3 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /Solution/TempCode/Program.cs
 /Solution/TempCode/TempCode.csproj
+/Solution/TempCode.Clases/Person.cs
+/Solution/TempCode.Clases/Program.cs
+/Solution/TempCode.Clases/TempCode.Clases.csproj
+/Solution/TempCode.Cycles/Properties/launchSettings.json
