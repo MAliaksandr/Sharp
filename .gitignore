@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Solution/TempCode/Program.cs
+/Solution/TempCode/TempCode.csproj

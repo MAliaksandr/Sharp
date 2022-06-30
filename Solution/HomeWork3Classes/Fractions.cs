@@ -8,23 +8,23 @@ namespace HomeWork3Classes
 {
     public class Fractions
     {
-        private long wholePart;
-        private ushort fracPart;
+        private long _wholePart;
+        private ushort _fracPart;
 
         public long WholePart
         {
-            get { return wholePart; }
+            get { return _wholePart; }
         }
 
         public ushort FracPart
         {
-            get { return fracPart; }
+            get { return _fracPart; }
         }
 
         public Fractions()
         {
-            wholePart = 0;
-            fracPart = 0;
+           _wholePart = 0;
+           _fracPart = 0;
         }
 
         public double GetFractions(double dblValue)
@@ -37,9 +37,9 @@ namespace HomeWork3Classes
 
             ushort strFracToInt = Convert.ToUInt16(stringValue);
 
-            this.wholePart = wholeValue;
+            _wholePart = wholeValue;
 
-            this.fracPart = strFracToInt;
+            _fracPart = strFracToInt;
 
             return dblValue;
        }
