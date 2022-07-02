@@ -60,35 +60,6 @@ namespace HomeWorkRWTransport
                 SetPlace(value);
             }
         }
-        public override void LoadingUnloading(bool moveType, byte count)
-        {
-                if (moveType)
-                {
-                    //  loading...             
-                    if (maxPeopleCount <= _busyPlaceCount + count)
-                    {
-                        _busyPlaceCount += count;
-                        _freePlaceCount = (byte)(maxPeopleCount - _busyPlaceCount);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Willn't add more people then max in car {maxPeopleCount}");
-                    }
-                }
-                else   //unloading...  
-                {
-                    if (count <= _busyPlaceCount)
-                    {
-                        _busyPlaceCount -= count;
-                        _freePlaceCount = (byte)(maxPeopleCount - _busyPlaceCount);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"We cann't out of more people then exists in car {_busyPlaceCount}");
-                    }
-                }
-        }
-
         public string GetInfo()
         {
             var st = new StringBuilder($"This is type: { passengerCarType}\n");
@@ -115,6 +86,10 @@ namespace HomeWorkRWTransport
                 Console.WriteLine($"Stated at platform {value- delta} people :-(");
             }
           
+        }
+        public override void LoadingUnloading(bool moveType, byte count = 0)
+        {
+ 
         }
     }
 }

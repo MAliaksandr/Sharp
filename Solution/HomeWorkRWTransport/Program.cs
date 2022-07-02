@@ -41,35 +41,16 @@ namespace HomeWorkRWTransport
             //v1.GetInfo();
 
 
-            var tr = new Train(2, "TN-25");
-            tr.GetInfo();
+            var tr = new Train(5, "TN-25");
 
-            var array = new IGetInfoable[]
+            Console.WriteLine("*****");
+            Console.WriteLine(tr.GetInfo());
+
+
+            foreach (var item in tr.passCar)
             {
-                new PassengerCar(PassengerCar.PassengerCarType.P)
-                {
-                    BusyPlace = 12
-                },
-                new PassengerCar(PassengerCar.PassengerCarType.M)
-                {
-                    BusyPlace = 23
-                },
-                new PassengerCar(PassengerCar.PassengerCarType.K)
-                {
-                   BusyPlace= 60
-                }
 
-            };
-
-
-            var sb = new StringBuilder();
-
-            foreach (var item in array)
-            {
-                sb.AppendLine(item.GetInfo());
-                sb.AppendLine("------------");
-            }
-            Console.WriteLine(sb);
+            } ;
 
 
         }

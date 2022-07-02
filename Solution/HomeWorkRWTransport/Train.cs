@@ -5,12 +5,14 @@ namespace HomeWorkRWTransport
     {
         public readonly byte countCar;
         public readonly string numerTrain;
-       // public readonly PassengerCar passCar;
+        public readonly PassengerCar passCar;
 
         public Train(byte countCar, string numerTrain)
         {
             this.countCar = countCar;
             this.numerTrain = numerTrain;
+
+            LoadRandomInTrain(countCar);
         }
 
         public string GetInfo()
@@ -29,11 +31,35 @@ namespace HomeWorkRWTransport
               Console.WriteLine($"But now we are staying...");
             }
         }
-        
-        private void LoadRandomInTrain(byte countCar)
+        public void LoadRandomInTrain(byte countCar)
         {
-            var rand = new Random().Next(0,50);
+            var rand = new Random();
 
+            var array = new IGetInfoable[countCar];
+            var resut = array;
+
+
+            for (int i = 1; i <= countCar; i++)
+            {
+                array[i - 1] = new PassengerCar(PassengerCar.PassengerCarType.P)
+                {
+                    BusyPlace = (byte)rand.Next(0, 50)
+                };
+            }
+
+            GetInfoByTrain(array);
+
+        }
+        public void GetInfoByTrain(IGetInfoable[] trainCars)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var item in trainCars)
+            {
+                sb.AppendLine(item.GetInfo());
+                sb.AppendLine("------------");
+            }
+            Console.WriteLine(sb);
         }
     }
 }
