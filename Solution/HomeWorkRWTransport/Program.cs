@@ -44,14 +44,8 @@ namespace HomeWorkRWTransport
             var tr = new Train(5, "TN-25");
 
             Console.WriteLine("*****");
+            tr.
             Console.WriteLine(tr.GetInfo());
-
-
-            foreach (var item in tr.passCar)
-            {
-
-            } ;
-
 
         }
     }

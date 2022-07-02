@@ -4,13 +4,13 @@ namespace HomeWorkRWTransport
     internal class Train : IMoveable, IGetInfoable
     {
         public readonly byte countCar;
-        public readonly string numerTrain;
+        public readonly string numberTrain;
         public readonly PassengerCar passCar;
 
-        public Train(byte countCar, string numerTrain)
+        public Train(byte countCar, string numberTrain)
         {
             this.countCar = countCar;
-            this.numerTrain = numerTrain;
+            this.numberTrain = numberTrain;
 
             LoadRandomInTrain(countCar);
         }
@@ -18,7 +18,7 @@ namespace HomeWorkRWTransport
         public string GetInfo()
         {
             var st = new StringBuilder("I'm a train -)\n");
-            st.AppendLine($"My number is {numerTrain}");
+            st.AppendLine($"My number is {numberTrain}");
             st.AppendLine($"I have a {countCar} cars.");
           
            return st.ToString();      
