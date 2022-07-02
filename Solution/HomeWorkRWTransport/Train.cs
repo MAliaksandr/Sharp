@@ -48,9 +48,8 @@ namespace HomeWorkRWTransport
             }
 
             GetInfoByTrain(array);
-
         }
-        public void GetInfoByTrain(IGetInfoable[] trainCars)
+        private void GetInfoByTrain(IGetInfoable[] trainCars)
         {
             var sb = new StringBuilder();
 
