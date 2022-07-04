@@ -75,7 +75,6 @@ namespace HomeWorkRWTransport
             {
                 _busyPlaceCount = value;
                 _freePlaceCount = (byte)(maxPeopleCount - value);
-
             }
             else
             {
@@ -84,8 +83,7 @@ namespace HomeWorkRWTransport
                 _freePlaceCount = (byte)(maxPeopleCount - delta);
                 Console.WriteLine($"We cann't set all {value} people");
                 Console.WriteLine($"Stated at platform {value- delta} people :-(");
-            }
-          
+            }        
         }
         public override void LoadingUnloading(bool moveType, byte count = 0)
         {

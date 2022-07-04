@@ -14,7 +14,6 @@ namespace HomeWorkRWTransport
 
             LoadRandomInTrain(countCar);
         }
-
         public string GetInfo()
         {
             var st = new StringBuilder("I'm a train -)\n");
@@ -34,11 +33,7 @@ namespace HomeWorkRWTransport
         public void LoadRandomInTrain(byte countCar)
         {
             var rand = new Random();
-
             var array = new IGetInfoable[countCar];
-            var resut = array;
-
-
             for (int i = 1; i <= countCar; i++)
             {
                 array[i - 1] = new PassengerCar(PassengerCar.PassengerCarType.P)
@@ -52,7 +47,6 @@ namespace HomeWorkRWTransport
         private void GetInfoByTrain(IGetInfoable[] trainCars)
         {
             var sb = new StringBuilder();
-
             foreach (var item in trainCars)
             {
                 sb.AppendLine(item.GetInfo());
