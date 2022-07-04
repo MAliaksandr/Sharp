@@ -68,7 +68,8 @@ namespace HomeWorkRWTransport
             foreach (var item in trainCollectCars)
             {
                 var sb = new StringBuilder();
-                sb.Append($"CarType: {item.passengerCarType}");
+                sb.Append($"CarNumber: {item.number}");
+                sb.Append($"--CarType: {item.passengerCarType}");
                 sb.Append($"--MaxPeopleCount:{item.maxPeopleCount}");
 
                 Console.WriteLine(sb);
@@ -101,12 +102,18 @@ namespace HomeWorkRWTransport
             Console.WriteLine($"\n\tCount people, " +
                 $"who in the way now: {countPeople} and baggage: {baggage}");
         }
-        // покажет 
-        public byte GetCarForPeopleCount(byte vallue)
+        // покажет вагон, куда можно разместить пассажиров 
+        public byte GetCarForPeopleCount(byte value)
         {
-
-
-            return (byte)vallue;
+            foreach(var item in trainCollectCars)
+            {
+                if ((item.maxPeopleCount - item.BusyPlace) > value)
+                {
+                    return item.number;
+                }
+            }
+            Console.WriteLine($"Haven't free places in Car for this value:{value}");
+            return 0;
         }
     }
 }

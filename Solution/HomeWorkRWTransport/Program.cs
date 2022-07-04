@@ -52,6 +52,7 @@ namespace HomeWorkRWTransport
 
             Console.WriteLine($"Train capacity:{tr.GetTrainCapacity()}");
             tr.GetPeopleAndBaggageInWay();
+            Console.WriteLine($"Number of Car fo free places {tr.GetCarForPeopleCount(20)}");
 
         }
     }

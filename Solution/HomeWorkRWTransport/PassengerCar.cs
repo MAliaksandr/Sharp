@@ -8,6 +8,7 @@ namespace HomeWorkRWTransport
         // тип вагона и максимальное количество мест, а т.ж. количество занятых мест
         // перегрузим погрузку/разгрузку
         public readonly byte maxPeopleCount;
+        public static byte counter=1;
         public readonly byte number;
         public readonly PassengerCarType passengerCarType;
         private byte _freePlaceCount;
@@ -29,7 +30,7 @@ namespace HomeWorkRWTransport
             Random random = new Random();
             PassengerCarType pasCarType = (PassengerCarType)values.GetValue(random.Next(values.Length));
 
-            number += 1;
+            number = counter++;
             passengerCarType = pasCarType;
             //в зависимсти от типа вагона, зависит его вместимость(мак. число пассажиров)
             switch (pasCarType)
@@ -57,6 +58,7 @@ namespace HomeWorkRWTransport
                     break;
             }          
         }
+
         public byte BusyPlace
         {
             get => _busyPlaceCount;
@@ -68,7 +70,8 @@ namespace HomeWorkRWTransport
         }
         public string GetInfo()
         {
-            var st = new StringBuilder($"This is type: { passengerCarType}\n");
+            var st = new StringBuilder($"CarNumber is {number}\n");
+            st.AppendLine($"This is type: { passengerCarType}");
             st.AppendLine($"All places in this car:{maxPeopleCount}");
             st.AppendLine($"Free people places:{_freePlaceCount}");
             st.AppendLine($"Busy places:{_busyPlaceCount}");
@@ -90,11 +93,29 @@ namespace HomeWorkRWTransport
                 Console.WriteLine($"We cann't set all {value} people in CarType:{passengerCarType}");
                 Console.WriteLine($"Stated at platform {value- delta} people :-(");
                 Console.WriteLine("*****");
-            }        
+            } 
         }
         public override void LoadingUnloading(bool moveType, byte count = 0)
         {
- 
+            if (moveType)
+            {
+                if (_freePlaceCount >= count)
+                {
+                    _busyPlaceCount += count;
+                }
+            }
+            else
+            {
+                if (_busyPlaceCount >= count)
+                {
+                    _busyPlaceCount -= count;
+                }
+                else if (_busyPlaceCount > 0)
+                {
+                    _busyPlaceCount = 0;
+                    count -= _busyPlaceCount;
+                }
+            }
         }
         public int CompareTo(PassengerCar? other)
         {
