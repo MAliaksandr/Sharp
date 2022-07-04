@@ -21,11 +21,16 @@ namespace HomeWorkRWTransport
             UN,
             M
         }
-        public PassengerCar(PassengerCarType pasCarType)
+        public PassengerCar()
         {
+            // инициализация рандомным типом из ENUM
+            Array values = PassengerCarType.GetValues(typeof(PassengerCarType));
+            Random random = new Random();
+            PassengerCarType pasCarType = (PassengerCarType)values.GetValue(random.Next(values.Length));
+
             number += 1;
             passengerCarType = pasCarType;
-
+            //в зависимсти от типа вагона, зависит его вместимость(мак. число пассажиров)
             switch (pasCarType)
             {
                 case PassengerCarType.SV:
@@ -81,8 +86,9 @@ namespace HomeWorkRWTransport
                 var delta = (byte)(maxPeopleCount - _busyPlaceCount);
                 _busyPlaceCount += delta;
                 _freePlaceCount = (byte)(maxPeopleCount - delta);
-                Console.WriteLine($"We cann't set all {value} people");
+                Console.WriteLine($"We cann't set all {value} people in CarType:{passengerCarType}");
                 Console.WriteLine($"Stated at platform {value- delta} people :-(");
+                Console.WriteLine("*****");
             }        
         }
         public override void LoadingUnloading(bool moveType, byte count = 0)
