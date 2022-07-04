@@ -6,14 +6,17 @@ namespace HomeWorkRWTransport
         public readonly byte countCar;
         public readonly string numberTrain;
         public readonly PassengerCar passCar;
+        public List<PassengerCar> trainCollectCars; 
 
+        // конструктор с инициализацией коллекции вагонов
         public Train(byte countCar, string numberTrain)
         {
             this.countCar = countCar;
             this.numberTrain = numberTrain;
 
-            LoadRandomInTrain(countCar);
+            trainCollectCars = new List<PassengerCar>((IEnumerable<PassengerCar>)LoadRandomInTrain(countCar));
         }
+        // общая инфа о составе
         public string GetInfo()
         {
             var st = new StringBuilder("I'm a train -)\n");
@@ -22,6 +25,7 @@ namespace HomeWorkRWTransport
           
            return st.ToString();      
         }
+        // движение состава
         public void Move(bool value, string destination)
         {
             Console.WriteLine($"We going to the {destination}");
@@ -30,20 +34,24 @@ namespace HomeWorkRWTransport
               Console.WriteLine($"But now we are staying...");
             }
         }
-        public void LoadRandomInTrain(byte countCar)
+
+        // инициализация состава рандомным числом пассажиров
+        public IGetInfoable[] LoadRandomInTrain(byte countCar)
         {
             var rand = new Random();
             var array = new IGetInfoable[countCar];
             for (int i = 1; i <= countCar; i++)
             {
-                array[i - 1] = new PassengerCar(PassengerCar.PassengerCarType.P)
+                array[i - 1] = new PassengerCar()
                 {
+                    // заполняем рандомным числом пассажиров
                     BusyPlace = (byte)rand.Next(0, 50)
                 };
-            }
-
+            }   
             GetInfoByTrain(array);
+            return array;
         }
+        // выводит инфу по каждому вагону в созданном составе
         private void GetInfoByTrain(IGetInfoable[] trainCars)
         {
             var sb = new StringBuilder();
