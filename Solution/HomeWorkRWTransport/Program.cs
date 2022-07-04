@@ -43,9 +43,15 @@ namespace HomeWorkRWTransport
 
             var tr = new Train(5, "TN-25");
 
-            Console.WriteLine("*****");
-           
             Console.WriteLine(tr.GetInfo());
+       
+            Console.WriteLine($"count car in this tarin:{tr.countCar}"); ;
+
+            foreach (var item in tr.trainCollectCars)
+            {
+
+            }
+
 
         }
     }

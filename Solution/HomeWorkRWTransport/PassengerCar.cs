@@ -1,8 +1,9 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 namespace HomeWorkRWTransport
 {
     // пассажирский вагон - наследник вагона в общем смысле
-    internal class PassengerCar : Car, IGetInfoable
+    internal class PassengerCar : Car, IGetInfoable, IComparable<PassengerCar>
     {
         // тип вагона и максимальное количество мест, а т.ж. количество занятых мест
         // перегрузим погрузку/разгрузку
@@ -94,6 +95,18 @@ namespace HomeWorkRWTransport
         public override void LoadingUnloading(bool moveType, byte count = 0)
         {
  
+        }
+        public int CompareTo(PassengerCar? other)
+        {
+            if (maxPeopleCount > other?.maxPeopleCount)
+            {
+                return 1;
+            }
+            else if (maxPeopleCount < other?.maxPeopleCount)
+            {
+                return -1;
+            }
+            return 0;
         }
     }
 }

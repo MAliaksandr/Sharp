@@ -5,7 +5,7 @@ namespace HomeWorkRWTransport
     {
         public readonly byte countCar;
         public readonly string numberTrain;
-        public readonly PassengerCar passCar;
+        private readonly PassengerCar passCar;
         public List<PassengerCar> trainCollectCars; 
 
         // конструктор с инициализацией коллекции вагонов
@@ -14,7 +14,7 @@ namespace HomeWorkRWTransport
             this.countCar = countCar;
             this.numberTrain = numberTrain;
 
-            trainCollectCars = new List<PassengerCar>((IEnumerable<PassengerCar>)LoadRandomInTrain(countCar));
+            trainCollectCars = new List<PassengerCar>(LoadRandomInTrain(countCar));
         }
         // общая инфа о составе
         public string GetInfo()
@@ -34,12 +34,11 @@ namespace HomeWorkRWTransport
               Console.WriteLine($"But now we are staying...");
             }
         }
-
         // инициализация состава рандомным числом пассажиров
-        public IGetInfoable[] LoadRandomInTrain(byte countCar)
+        public PassengerCar[] LoadRandomInTrain(byte countCar)
         {
             var rand = new Random();
-            var array = new IGetInfoable[countCar];
+            var array = new PassengerCar[countCar];
             for (int i = 1; i <= countCar; i++)
             {
                 array[i - 1] = new PassengerCar()
@@ -62,5 +61,11 @@ namespace HomeWorkRWTransport
             }
             Console.WriteLine(sb);
         }
+        public void SortByMaxCount()
+        {
+
+
+        }
+
     }
 }
