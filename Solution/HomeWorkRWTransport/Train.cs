@@ -6,7 +6,7 @@ namespace HomeWorkRWTransport
         public readonly byte countCar;
         public readonly string numberTrain;
         private readonly PassengerCar passCar;
-        public List<PassengerCar> trainCollectCars; 
+        public List<PassengerCar> trainCollectCars;
 
         // конструктор с инициализацией коллекции вагонов
         public Train(byte countCar, string numberTrain)
@@ -45,6 +45,7 @@ namespace HomeWorkRWTransport
                 {
                     // заполняем рандомным числом пассажиров
                     BusyPlace = (byte)rand.Next(0, 50)
+                    
                 };
             }   
             GetInfoByTrain(array);
@@ -61,11 +62,51 @@ namespace HomeWorkRWTransport
             }
             Console.WriteLine(sb);
         }
-        public void SortByMaxCount()
+        private void SortByMaxCount(List<PassengerCar>  trainCollectCars)
+        {
+            trainCollectCars.Sort();
+            foreach (var item in trainCollectCars)
+            {
+                var sb = new StringBuilder();
+                sb.Append($"CarType: {item.passengerCarType}");
+                sb.Append($"--MaxPeopleCount:{item.maxPeopleCount}");
+
+                Console.WriteLine(sb);
+            }
+        }
+        public void SortCar()
+        {
+            SortByMaxCount(trainCollectCars);
+        }
+        // подсчитаем общую вместимость состава
+        public int GetTrainCapacity()
+        {
+            var countPeople = 0;
+            foreach (var item in trainCollectCars)
+            {
+                countPeople += (int)item.maxPeopleCount;
+            }
+            return countPeople;
+        }
+        // колчество едущих пассажиров и богажа
+        public void GetPeopleAndBaggageInWay()
+        {
+            var countPeople = 0;
+            var baggage = 0;
+            foreach (var item in trainCollectCars)
+            {
+                countPeople += (int)item.BusyPlace;
+            }
+            baggage = countPeople*2;
+            Console.WriteLine($"\n\tCount people, " +
+                $"who in the way now: {countPeople} and baggage: {baggage}");
+        }
+        // покажет 
+        public byte GetCarForPeopleCount(byte vallue)
         {
 
 
+            return (byte)vallue;
         }
-
     }
 }
