@@ -112,7 +112,7 @@ namespace HomeWorkRWTransport
                     return item.number;
                 }
             }
-            Console.WriteLine($"Haven't free places in Car for this value:{value}");
+            Console.WriteLine($"Haven't free places in anyone Car for this value:{value}");
             return 0;
         }
     }

@@ -44,7 +44,7 @@ namespace HomeWorkRWTransport
             //v1.GetInfo();
 
 
-            var tr = new Train(5, "TN-25");
+            var tr = new Train(12, "TN-25");
 
             Console.WriteLine(tr.GetInfo());
 

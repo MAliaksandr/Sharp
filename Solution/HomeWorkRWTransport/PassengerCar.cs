@@ -25,6 +25,7 @@ namespace HomeWorkRWTransport
         }
         public PassengerCar()
         {
+            
             // инициализация рандомным типом из ENUM
             Array values = PassengerCarType.GetValues(typeof(PassengerCarType));
             Random random = new Random();
@@ -58,7 +59,6 @@ namespace HomeWorkRWTransport
                     break;
             }          
         }
-
         public byte BusyPlace
         {
             get => _busyPlaceCount;
@@ -80,9 +80,9 @@ namespace HomeWorkRWTransport
         }
         private void SetPlace(byte value)
         {
-            if (((byte)maxPeopleCount - _busyPlaceCount >= value) || (maxPeopleCount> value))
+            if (((byte)maxPeopleCount - _busyPlaceCount >= value) || (maxPeopleCount > value))
             {
-                _busyPlaceCount = value;
+                 _busyPlaceCount = value;
                 _freePlaceCount = (byte)(maxPeopleCount - value);
             }
             else
@@ -91,9 +91,9 @@ namespace HomeWorkRWTransport
                 _busyPlaceCount += delta;
                 _freePlaceCount = (byte)(maxPeopleCount - delta);
                 Console.WriteLine($"We cann't set all {value} people in CarType:{passengerCarType}");
-                Console.WriteLine($"Stated at platform {value- delta} people :-(");
+                Console.WriteLine($"Stated at platform {value - delta} people :-(");
                 Console.WriteLine("*****");
-            } 
+            }  
         }
         public override void LoadingUnloading(bool moveType, byte count = 0)
         {
