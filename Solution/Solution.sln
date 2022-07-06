@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempCode.Clases", "TempCode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HW3.Classes.Trapeze", "HW3.Classes.Trapeze\HW3.Classes.Trapeze.csproj", "{0C471837-346D-4B43-B885-16268341B92A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkRWTransport", "HomeWorkRWTransport\HomeWorkRWTransport.csproj", "{CA9E5641-B119-4284-AAD8-33C32C4A673D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWorkRWTransport", "HomeWorkRWTransport\HomeWorkRWTransport.csproj", "{CA9E5641-B119-4284-AAD8-33C32C4A673D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW.Files", "HW.Files\HW.Files.csproj", "{93EE199B-73B9-4965-B89E-DDFFA84A3C50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{CA9E5641-B119-4284-AAD8-33C32C4A673D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA9E5641-B119-4284-AAD8-33C32C4A673D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA9E5641-B119-4284-AAD8-33C32C4A673D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93EE199B-73B9-4965-B89E-DDFFA84A3C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93EE199B-73B9-4965-B89E-DDFFA84A3C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93EE199B-73B9-4965-B89E-DDFFA84A3C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93EE199B-73B9-4965-B89E-DDFFA84A3C50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
