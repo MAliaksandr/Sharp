@@ -16,20 +16,23 @@ namespace HW.String
         {
             FilePath = filePath;
             // запишем путь к выходному файлу, будет рядом с файлом для чтения
-            FileInfo fileInf = new FileInfo(FilePath);
-            OutPutFilePath = string.Concat(fileInf.DirectoryName, @"\output.txt");
+            if (filePath != null)
+            {          
+                FileInfo fileInf = new FileInfo(FilePath);
+                OutPutFilePath = string.Concat(fileInf.DirectoryName, @"\output.txt");
 
-            if (outFileOverride)
-            {
-                try
+                if (outFileOverride)
                 {
-                    using (var f = new FileStream(OutPutFilePath, FileMode.Truncate))
+                    try
                     {
+                        using (var f = new FileStream(OutPutFilePath, FileMode.Truncate))
+                        {
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
+                    catch (Exception ex)
+                    {
                     Console.WriteLine($"Exception! I didn't owerride outputfile {ex.ToString}");
+                    }
                 }
             }
         }

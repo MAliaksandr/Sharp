@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 namespace HW.String
 {
-    internal class SentenceTextFileViewer : FileParseInfo, IReadable, IWriteble
+    internal class SentenceTextFileViewer : FileParseInfo, IReadable, IWriteble //, IComparable<SentenceTextFileViewer>
     {
-       
-        public SentenceTextFileViewer(string filePath, bool outFileOverride)
-        {
+        public List<string> Sentences;
 
+        public SentenceTextFileViewer(string filePath, bool outFileOverride) : base(filePath, outFileOverride)
+        {
         }
+
+        //public int CompareTo(SentenceTextFileViewer? other)
+        //{
+            
+        //}
 
         public void ReadInfo()
         {
@@ -27,7 +32,7 @@ namespace HW.String
                     var matches = Regex.Split(alltext, sentencePatern);
 
                     var counter = 1;
-                    Console.WriteLine($"counts: {matches.Length - 1}");
+                    Console.WriteLine($"counts: {matches.Length}");
 
                     foreach (var item in matches)
                     {

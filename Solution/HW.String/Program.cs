@@ -9,7 +9,11 @@ namespace HW.String
 
             var fileIinfo = new SentenceTextFileViewer(path,true);
 
-            fileIinfo.SentenceSortByWord();
+           // fileIinfo.SentenceSortByWord();
+
+          //  var sentence = new SentenceTextFileViewer(path, true);
+
+            var wrd = new WordInfoViewer("Symbol");
 
             //using (StreamReader reader = new StreamReader(path))
             //{

@@ -8,34 +8,85 @@ namespace HW.String
 {
     internal class WordInfoViewer : FileParseInfo, IReadable, IWriteble
     {
+        public string WordWithMinLatters 
+        { 
+            get => WordWithMinLatters; 
+            set 
+            {
+                WordWithMinLatters = value;
+            } 
+        }
+        public string WordWithMaxLatters 
+        { 
+            get => WordWithMaxLatters;
+            set
+            {
+                WordWithMinLatters = value;
+            } 
+        }
+
+        public int LetterCount
+        {
+            get => LetterCount;
+            set 
+            {
+                LetterCount = value;
+            }
+        }
+
         public List<string> words;
         public WordInfoViewer(string filePath,
                               bool outFileOverride) : base(filePath, outFileOverride)
         {
         }
+        // конструктор для передачи просто слова(без файла)
+        public WordInfoViewer(string word) : base(null, true)
+        {
+            LetterCount = GetLetterInWord(word);
+
+            this.WordWithMinLatters = word;
+            this.WordWithMaxLatters = word;
+        }
         public void ReadInfo()
         {
-            using (var strReader = new StreamReader(FilePath))
+            try
             {
-                var alltext = strReader.ReadToEnd();
+                using (var strReader = new StreamReader(FilePath))
+                {
+                    var alltext = strReader.ReadToEnd();
 
-                char[] separator = { ' ', ',', '.', ':', '!', '?', ';', ';', '-', '\t', '\n' };
+                    char[] separator = { ' ', ',', '.', ':', '!', '?', ';', ';', '-', '\t', '\n' };
 
-                words = alltext.Split(separator, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    words = alltext.Split(separator, StringSplitOptions.RemoveEmptyEntries).ToList();
+                }
             }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Cann't read file {ex.ToString}");
+            }
+            
         }
 
         public void RecordResult(string word, int counter)
         {
-                if (word is null)
-                {
-                    throw new ArgumentNullException("Dont't used null value");
-                }
+            if (word is null)
+            {
+               throw new ArgumentNullException("Dont't used null value");
+            }
 
+            try
+            {
                 using (var sw = new StreamWriter(OutPutFilePath, true))
                 {
                     sw.WriteLine($"{word.ToString()} ---> {counter}");
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Cann't write WORDS into file {ex.ToString}");
+            }
+                
             }
 
         private int GetWordCount(string word, List<string> collection)
@@ -47,6 +98,16 @@ namespace HW.String
                 {
                     counter++;
                 }
+            }
+            return counter;
+        }
+
+        public int GetLetterInWord(string word)
+        {
+            var counter = 0;
+            foreach (var item in word)
+            {
+                counter++;
             }
             return counter;
         }
@@ -65,7 +126,7 @@ namespace HW.String
                     newCollection.Add(item);
                 }
             }
-
+            // пишем в файл
             foreach (var word in newCollection)
             {
                 RecordResult(word, GetWordCount(word, words));
