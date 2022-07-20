@@ -8,6 +8,6 @@ namespace HW.String
 {
     internal interface IWriteble
     {
-        public void RecordResult(string word, int counter);
+        public void RecordResult(string str, string info, int counter);
     }
 }

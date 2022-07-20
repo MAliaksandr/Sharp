@@ -68,7 +68,7 @@ namespace HW.String
             
         }
 
-        public void RecordResult(string word, int counter)
+        public void RecordResult(string word, string info, int counter)
         {
             if (word is null)
             {
@@ -79,7 +79,7 @@ namespace HW.String
             {
                 using (var sw = new StreamWriter(OutPutFilePath, true))
                 {
-                    sw.WriteLine($"{word.ToString()} ---> {counter}");
+                    sw.WriteLine($"{info}{word.ToString()} ---> {counter}");
                 }
             }
             catch (Exception ex)
@@ -116,6 +116,8 @@ namespace HW.String
         {
             words.Sort();
 
+            var INFO_WORD = "w: ";
+
             var newCollection = new List<string>();
 
             // создаем коллекцию, исключая одинаково встречающиеся слова
@@ -129,7 +131,7 @@ namespace HW.String
             // пишем в файл
             foreach (var word in newCollection)
             {
-                RecordResult(word, GetWordCount(word, words));
+                RecordResult(word, INFO_WORD, GetWordCount(word, words));
             }
 
         }

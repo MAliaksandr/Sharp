@@ -21,11 +21,11 @@ namespace HW.String
             }
         }
 
-        public void RecordResult(string word, int counter)
+        public void RecordResult(string word, string info, int counter)
         {
             using (var sw = new StreamWriter(OutPutFilePath, true))
             {
-                sw.WriteLine($"{word.ToString()} ---> {counter}");
+                sw.WriteLine($"{info} {word.ToString()} ---> {counter}");
             }
         }
     }
