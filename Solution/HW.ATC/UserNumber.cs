@@ -10,24 +10,45 @@ namespace HW.ATC
     // тариф
     // дата подключения тарифа
     // 
-    internal class UserNumber
+    internal class UserNumber:IAddLogInfoble
     {
         private string _chengeTariffDate;
         public Int32 Number { get; set; }
         public Tariff Tariff { get; set; }
 
-        public bool Change
+        public void AddLogInfo(string info)
         {
-            get;
-            set
+            if (info is null)
             {
-                // проверим не в этом ли месяце был  если в этом - ругнемся
-                if (true)
+                throw new ArgumentNullException("Dont't used null value");
+            }
+
+            try
+            {
+                using (var sw = new StreamWriter(OutPutFilePath, true))
                 {
-                    Console.WriteLine("You cann't change tariff because this tariff was changed in this month");
+                    sw.WriteLine($"{info}");
+                    sw.WriteLine($"{word.ToString()}");
                 }
             }
-            
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Cann't write sentences into file {ex.ToString}");
+            }
         }
+
+        //public bool Change
+        //{
+        //    get;
+        //    set
+        //    {
+        //        // проверим не в этом ли месяце был  если в этом - ругнемся
+        //        if (true)
+        //        {
+        //            Console.WriteLine("You cann't change tariff because this tariff was changed in this month");
+        //        }
+        //    }
+
+        //}
     }
 }
