@@ -11,7 +11,7 @@ namespace HW.ATC
     {
         internal static string FilePath;
 
-        public static void InitLogWriter(string filePath)
+        public static void Init(string filePath)
         {
             FilePath = filePath;
             
