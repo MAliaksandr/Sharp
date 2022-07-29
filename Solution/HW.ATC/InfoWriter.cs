@@ -19,11 +19,9 @@ namespace HW.ATC
                     {
                         sw.WriteLine($"{info}");
                     }
-
                 }
                 catch (Exception ex)
                 {
-
                     Console.WriteLine($"Cann't write info: {info} into file {ex.ToString}"); 
                 }
             }
