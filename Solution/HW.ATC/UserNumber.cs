@@ -9,46 +9,53 @@ namespace HW.ATC
     // сам номер
     // тариф
     // дата подключения тарифа
-    // 
+    
+    // доавление в лог везде должно идти через многопоточность
+    
     internal class UserNumber:IAddLogInfoble
     {
-        private string _chengeTariffDate;
+        private DateTime _chengeTariffDate;
         public Int32 Number { get; set; }
         public Tariff Tariff { get; set; }
 
         public void AddLogInfo(string info)
         {
-            if (info is null)
-            {
-                throw new ArgumentNullException("Dont't used null value");
-            }
+            var infoWriter = new InfoWriter();
 
-            try
-            {
-                using (var sw = new StreamWriter(OutPutFilePath, true))
-                {
-                    sw.WriteLine($"{info}");
-                    sw.WriteLine($"{word.ToString()}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Cann't write sentences into file {ex.ToString}");
-            }
+            infoWriter.RecordInfo("");
         }
 
-        //public bool Change
-        //{
-        //    get;
-        //    set
-        //    {
-        //        // проверим не в этом ли месяце был  если в этом - ругнемся
-        //        if (true)
-        //        {
-        //            Console.WriteLine("You cann't change tariff because this tariff was changed in this month");
-        //        }
-        //    }
+        // метод позволяющий сменить тариф
+        public void ChangeTariff(Tariff tariff)
+        {
+            if (CalcCurrentDate(_chengeTariffDate) == false)
+            {
+                var newTariff = new Tariff(tariff);
+                                
+                // тут же надо событи, уведомляющее компанию что-то вроде event ChangeTariffCompanyInfo
+            }
+            else
+            {
+                Console.WriteLine("You cann't change tariff because this tariff was changed in this month");
+            }
 
-        //}
+        }
+
+        // вернет True если изменения были в этом месяце
+        private bool CalcCurrentDate(DateTime _chengeTariffDate)
+        {
+            DateTime dateTime = DateTime.Today;
+            var delta = dateTime.Subtract(_chengeTariffDate);
+
+            // в идеале смотреть только месяц... но пока не знаю как)
+            if (delta.TotalDays>31)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
